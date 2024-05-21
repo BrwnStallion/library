@@ -10,6 +10,13 @@
 - Write a function that takes the users input and stores it in a new book, and
   puts that new book into the library
     - This function should use the constructor
+- All of the books should be displayed in a table on the HTML
+    - Use a function that loops through the library array and displays each book
+        - Can be in a table, or on cards, or something like that
+    - Creates DOM elements and places them in the correct container
+    - This function should run when the page loads, I think. The server should
+      already have the user's books saved, and they should be displayed
+    - The display will update when a user enters a new book to the library
 */
 
 
