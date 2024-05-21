@@ -47,12 +47,65 @@ a {
     "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
 
     /* ----------------------- Variables ---------------------------- */
-    /* Fonts */
-
+    
     /* Colors */
-
-    /* Sizes */
-
+    
+    /* Sizes: Margins, Padding, Gaps */
+    --sizeMar01: 1rem;
+    --sizeMar02: 2rem;
+    --sizePad02: 2rem;
+    /* Sizes: Fonts */
+    --sizeFontHeader: 1.5rem;
+    --sizeFontSection: 1.2rem;
 }
 
 /* ------------------------------ Styles ------------------------------------ */
+
+html {
+    height: 100%;
+}
+
+body {
+    min-height: 100%;
+    cursor: default;
+
+    display: grid;
+    grid-template-rows: auto 1fr;
+}
+
+
+.header {
+    grid-row: 1 / 2;
+    position: sticky;
+    top: 0;
+    margin: var(--sizeMar02) var(--sizeMar01);
+
+    font-size: var(--sizeFontHeader);
+
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    align-items: center;
+
+    & .sidebar-icon {
+        /* justify-self: start; */
+    }
+
+    & .title {
+        /* justify-self: start; */
+    }
+
+    & .nav {
+        justify-self: center;
+
+        display: flex;
+        gap: 1rem;
+    }
+
+    & .account {
+        justify-self: end;
+    }
+}
+
+.main-content {
+    grid-row: 2 / 3;
+}
