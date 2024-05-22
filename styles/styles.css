@@ -41,6 +41,17 @@ a {
     }
 }
 
+button, input, optgroup, select, textarea {
+    font-family: inherit;
+    font-size: 100%;
+    line-height: 1.15;
+    margin: 0;
+}
+
+button, input {
+    overflow: visible;
+}
+
 :root {
     font-size: 16px;
     --system-ui: system-ui, "Segoe UI", Roboto, Helvetica, Arial, sans-serif,
@@ -219,6 +230,10 @@ body {
 
             & .buttons {
                 justify-self: end;
+
+                & button {
+
+                }
             }
         }
     }
