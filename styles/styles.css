@@ -98,6 +98,7 @@ body {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     align-items: center;
+    gap: var(--sizeMar01);
 
     & .title-sidebar {
         
@@ -129,7 +130,8 @@ body {
         font-size: var(--sizeFont02);
 
         display: flex;
-        gap: 1rem;
+        align-items: center;
+        gap: var(--sizeMar01);
     }
 
     & .account {
