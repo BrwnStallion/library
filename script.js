@@ -84,8 +84,50 @@ function getEachBook(library) {
 
             // Only display these properties
             if (isOwn && !isBlank) {
-                
+
             };
         };
     });
+}
+
+function makeElement(element, eleClass) {
+    const element = document.createElement(element);
+    element.classList.toggle(eleClass);
+    return element;
+}
+
+function addContent(element, content) {
+    element.textContent = content;
+    return element;
+}
+
+function appendElement(parentElement, element) {
+    parentElement.appendChild(element);
+}
+
+
+function addParagraph(parentElement, content) {
+    const para = document.createElement('p');
+    para.classList.toggle('info');
+    para.textContent = content;
+    parentElement.appendChild(para);
+}
+
+function addDiv(parentElement, divClass) {
+    const card = document.createElement('div');
+    card.classList.toggle(divClass);
+}
+
+function addButton(parentElement, btnClass, content) {
+    const button = document.createElement('button');
+    button.classList.toggle(btnClass);
+    button.textContent = content;
+    parentElement.appendChild(button);
+}
+
+function addElement(parentElement, element, eleClass, content) {
+    const element = document.createElement(element);
+    element.classList.toggle(eleClass);
+    element.textContent = content;
+    parentElement.appendChild(element);
 }
