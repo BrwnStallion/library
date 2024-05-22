@@ -153,6 +153,8 @@ body {
 
         & .profile-pic {
             border-radius: 50%;
+            box-sizing: initial;
+            border: 2px solid var(--clrZinc03);
             background-image: url(../img/profile-pic.jpg);
             background-size: 250%;
             background-position: 50% 10%;
