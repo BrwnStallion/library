@@ -103,7 +103,7 @@ function getEachBook(library) {
 
                 } else {
                     
-                    element = makeElement('p');
+                    element = makeElement('p', '');
                     element.textContent = item[prop];
                     info.appendChild(element);
                 }
@@ -137,6 +137,10 @@ function addElement(parent, tag, eleClass, content) {
 // Creates an element
 function makeElement(tag, eleClass) {
     const element = document.createElement(tag);
-    element.classList.toggle(eleClass);
+
+    // Avoids 'undefined' class if 'eleClass' left blank
+    if (eleClass !== '') {
+        element.classList.toggle(eleClass);
+    }
     return element;
 }
