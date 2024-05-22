@@ -144,3 +144,9 @@ function makeElement(tag, eleClass) {
     }
     return element;
 }
+
+// Append library size to title
+function appendTitle() {
+    let title = document.querySelector('h1.title');
+    title.textContent += ` (${myLibrary.length})`;
+}
