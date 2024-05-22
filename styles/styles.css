@@ -54,6 +54,7 @@ a {
     --sizeMar01: 1rem;
     --sizeMar02: 2rem;
     --sizePad02: 2rem;
+    --sizeSmall01: 0.6rem;
     /* Sizes: Fonts */
     --sizeFont01: 1.5rem;
     --sizeFont02: 1.2rem;
@@ -91,6 +92,7 @@ body {
         display: grid;
         grid-template-columns: auto 1fr;
         gap: var(--sizeMar01);
+        justify-items: start;
         align-items: center;
 
         & .sidebar-icon {
@@ -102,7 +104,10 @@ body {
         }
 
         & .title {
-            /* justify-self: start; */
+            padding: var(--sizeSmall01);
+            padding-left: 0rem;
+            justify-content: start;
+            cursor: pointer;
         }
     }
 
