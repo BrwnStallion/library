@@ -36,11 +36,16 @@ const myLibrary = [];
 
 const bookMaster = {
     // init method for adding properties to books
-    init: function(title, author, pages, read) {
+    init: function(title, author, pages, genre, type, yearPublished, read,
+      yearRead) {
         this.title = title;
         this.author = author;
         this.pages = pages;
+        this.genre = genre;
+        this.type = type;
+        this.yearPublished = yearPublished;
         this.read = read;
+        this.yearRead = yearRead;
         return this; // allows to chain .create with .init
   },
 }
@@ -52,9 +57,10 @@ bookMaster.info = function() {
 };
 
 
-function addBookToLibrary(title, author, pages, read) {
+function addBookToLibrary(title, author, pages, genre, type, yearPublished,
+  read, yearRead) {
     const book = Object.create(bookMaster).init(
-            title, author, pages, read);
+      title, author, pages, genre, type, yearPublished, read, yearRead);
 
     myLibrary.push(book);
 }
