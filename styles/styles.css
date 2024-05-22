@@ -100,7 +100,7 @@ body {
     grid-row: 1 / 2;
     position: sticky;
     top: 0;
-    z-index: 999;
+    z-index: 1;
     padding: var(--sizeMar02) var(--sizeMar01);
 
     font-size: var(--sizeFont01);
@@ -244,4 +244,16 @@ body {
             }
         }
     }
+}
+
+.form-overlay {
+    position: fixed;
+    z-index: 2;
+    top: 20%;
+    left: calc((100% - max(40ch, 40%)) / 2);
+
+    width: max(40ch, 40%);
+    background-color: var(--clrZinc02);
+
+    /* display: none; */
 }
