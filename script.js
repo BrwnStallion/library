@@ -64,3 +64,28 @@ function addBookToLibrary(title, author, pages, genre, type, yearPublished,
 
     myLibrary.push(book);
 }
+
+function getEachBook(library) {
+    
+    // Loop through each book
+    library.forEach((item)=> {
+
+        // Loop through each property on current book
+        for (let prop in item) {
+            
+            // Property is on the book (and not prototype)
+            let isOwn = item.hasOwnProperty(prop);
+            
+            // Property wasn't left blank
+            let isBlank;
+            (item[prop] === '')
+                ? isBlank = true
+                : isBlank = false;
+
+            // Only display these properties
+            if (isOwn && !isBlank) {
+                
+            };
+        };
+    });
+}
