@@ -66,6 +66,7 @@ a {
     --sizeFont01: 1.5rem;
     --sizeFont02: 1.2rem;
     --sizeFont03: 2.5rem;
+    --sizeFont04: 3rem;
 }
 
 /* ------------------------------ Styles ------------------------------------ */
@@ -194,11 +195,28 @@ body {
         & .book-card {
             border-radius: 5px;
             background-color: var(--clrZinc04);
+            padding: var(--sizeMar01);
 
             transition: transform 0.3s;
 
+            display: grid;
+            grid-template-rows: auto 1fr auto;
+            gap: var(--sizeMar01);
+
             &:hover {
                 transform: scale(1.02);
+            }
+
+            & .title {
+                font-size: var(--sizeFont04);
+            }
+
+            & .info {
+                font-size: var(--sizeFont02);
+            }
+
+            & .buttons {
+                justify-self: end;
             }
         }
     }
