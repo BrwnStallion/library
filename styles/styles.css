@@ -55,8 +55,8 @@ a {
     --sizeMar02: 2rem;
     --sizePad02: 2rem;
     /* Sizes: Fonts */
-    --sizeFontHeader: 1.5rem;
-    --sizeFontSection: 1.2rem;
+    --sizeFont01: 1.5rem;
+    --sizeFont02: 1.2rem;
 }
 
 /* ------------------------------ Styles ------------------------------------ */
@@ -80,22 +80,36 @@ body {
     top: 0;
     margin: var(--sizeMar02) var(--sizeMar01);
 
-    font-size: var(--sizeFontHeader);
+    font-size: var(--sizeFont01);
 
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     align-items: center;
 
-    & .sidebar-icon {
-        /* justify-self: start; */
-    }
+    & .title-sidebar {
+        
+        display: grid;
+        grid-template-columns: auto 1fr;
+        gap: var(--sizeMar01);
+        align-items: center;
 
-    & .title {
-        /* justify-self: start; */
+        & .sidebar-icon {
+            align-self: center;
+
+            cursor: pointer;
+            /* minor alignment to center with the rest of the header objects */
+            margin-top: 0.3rem;
+        }
+
+        & .title {
+            /* justify-self: start; */
+        }
     }
 
     & .nav {
         justify-self: center;
+
+        font-size: var(--sizeFont02);
 
         display: flex;
         gap: 1rem;
@@ -103,6 +117,8 @@ body {
 
     & .account {
         justify-self: end;
+
+        font-size: var(--sizeFont02);
     }
 }
 
