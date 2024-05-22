@@ -49,7 +49,7 @@ a {
     /* ----------------------- Variables ---------------------------- */
     
     /* Colors */
-    
+    --clrImgBrdr: black;
     /* Sizes: Margins, Padding, Gaps */
     --sizeMar01: 1rem;
     --sizeMar02: 2rem;
@@ -124,6 +124,30 @@ body {
         justify-self: end;
 
         font-size: var(--sizeFont02);
+
+        display: grid;
+        grid-template-columns: auto 1fr;
+        align-items: center;
+        gap: var(--sizeSmall01);
+
+        & .profile-pic {
+            border-radius: 50%;
+            background-image: url(../img/profile-pic.jpg);
+            background-size: 250%;
+            background-position: 50% 10%;
+            height: 3rem;
+            width: 3rem;
+            cursor: pointer;
+
+            &:hover {
+                border: 2px solid var(--clrImgBrdr);
+            }
+        }
+
+        & .profile-name {
+            padding: var(--sizeSmall01) 0rem;
+            cursor: pointer;
+        }
     }
 }
 
