@@ -67,8 +67,16 @@ function addBookToLibrary(title, author, pages, genre, type, yearPublished,
 
 function getEachBook(library) {
     
+    let cardContainer = document.querySelector('.card-container');
+
     // Loop through each book
     library.forEach((item)=> {
+        
+        // Create card element
+        let card = makeElement('div','book-card');
+        // Create card sub-divs
+        let info = makeElement('div', 'info');
+        let buttons = makeElement('div', 'buttons');
 
         // Loop through each property on current book
         for (let prop in item) {
@@ -84,50 +92,51 @@ function getEachBook(library) {
 
             // Only display these properties
             if (isOwn && !isBlank) {
+                let element;
 
+                // Add content to the card
+                if (prop === 'title') {
+
+                    element = makeElement('h2', 'title');
+                    element.textContent = item[prop];
+                    card.appendChild(element);
+
+                } else {
+                    
+                    element = makeElement('p');
+                    element.textContent = item[prop];
+                    info.appendChild(element);
+                }
+                
             };
         };
+
+        // Append info to the card
+        card.appendChild(info);
+
+        // Create and append buttons to the button div
+        addElement(buttons, 'button', 'read', 'Mark Read');
+        addElement(buttons, 'button', 'remove', 'Remove')
+
+        // Append buttons div to the card
+        card.appendChild(buttons);
+
+        // Append card to the card-container
+        cardContainer.appendChild(card);
+
     });
 }
 
-function makeElement(element, eleClass) {
-    const element = document.createElement(element);
+// Creates and appends an element with content to a parent
+function addElement(parent, tag, eleClass, content) {
+    let element = makeElement(tag, eleClass)
+    element.textContent = content;
+    parent.appendChild(element);
+}
+
+// Creates an element
+function makeElement(tag, eleClass) {
+    const element = document.createElement(tag);
     element.classList.toggle(eleClass);
     return element;
-}
-
-function addContent(element, content) {
-    element.textContent = content;
-    return element;
-}
-
-function appendElement(parentElement, element) {
-    parentElement.appendChild(element);
-}
-
-
-function addParagraph(parentElement, content) {
-    const para = document.createElement('p');
-    para.classList.toggle('info');
-    para.textContent = content;
-    parentElement.appendChild(para);
-}
-
-function addDiv(parentElement, divClass) {
-    const card = document.createElement('div');
-    card.classList.toggle(divClass);
-}
-
-function addButton(parentElement, btnClass, content) {
-    const button = document.createElement('button');
-    button.classList.toggle(btnClass);
-    button.textContent = content;
-    parentElement.appendChild(button);
-}
-
-function addElement(parentElement, element, eleClass, content) {
-    const element = document.createElement(element);
-    element.classList.toggle(eleClass);
-    element.textContent = content;
-    parentElement.appendChild(element);
 }
