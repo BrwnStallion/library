@@ -150,3 +150,10 @@ function appendTitle() {
     let title = document.querySelector('h1.title');
     title.textContent += ` (${myLibrary.length})`;
 }
+
+// Listener to open the form dialog box
+const addBtn = document.querySelector('#add-book');
+const formDialog = document.querySelector('.form-overlay');
+addBtn.addEventListener('click', (e) => {
+    formDialog.showModal();
+});
