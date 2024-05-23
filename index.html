@@ -47,8 +47,8 @@
             </div> -->
         </div>
     </div>
-    <div class="form-overlay">
-        <form action="" method="get" class="book-form">
+    <dialog class="form-overlay">
+        <form action="" method="get" class="book-form" id="book-form">
             <h2>Add a book to your collection</h2>
             <div class='form-row'>
                 <label for="title">Title</label>
@@ -94,9 +94,11 @@
                 </ul>
             </fieldset>
             <div class="form-row">
-                <button>Submit</button><button>Cancel</button>
+                <button form="book-form" id="submit" type="submit"
+                >Submit</button><button id="cancel" formmethod="dialog"
+                >Cancel</button>
             </div>
         </form>
-    </div>
+    </dialog>
 </body>
 </html>
