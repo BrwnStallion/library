@@ -154,6 +154,13 @@ function appendTitle() {
 // Listener to open the form dialog box
 const addBtn = document.querySelector('#add-book');
 const formDialog = document.querySelector('.form-overlay');
-addBtn.addEventListener('click', (e) => {
+addBtn.addEventListener('click', () => {
     formDialog.showModal();
 });
+
+
+// DOM Content Loaded Listener; for loading existing cards, adding library count
+
+
+
+// Form submit button listener; for updating cards, updating library count
