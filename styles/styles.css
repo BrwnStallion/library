@@ -88,6 +88,7 @@ button, input {
     --sizeFont02: 1.2rem;
     --sizeFont03: 2.5rem;
     --sizeFont04: 3rem;
+    --sizeFont05: 1.2rem;
 }
 
 /* Sans-Serif Font */
@@ -274,6 +275,10 @@ body {
         flex-direction: column;
         align-items: flex-start;
         gap: var(--sizeMar01);
+
+        & legend, & .form-row label {
+            font-size: var(--sizeFont05);
+        }
         
         & h2 {
             align-self: center;
@@ -302,11 +307,13 @@ body {
 
         }
 
-        & .radio-form-row {
+        & .radio-form-row div {
             margin-left: var(--sizeFormRowMar);
 
+            display: flex;
+            align-items: center;
+
             & legend {
-                float: left;
                 margin-right: var(--sizeMar01);
 
                 width: var(--sizeLabelWidth);
@@ -316,10 +323,6 @@ body {
             & ul {
                 display: flex;
                 gap: var(--sizeMar01);
-            }
-
-            & input[type='radio'] {
-                
             }
         }
 
