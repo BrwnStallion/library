@@ -67,6 +67,7 @@ button, input {
     --clrZinc04: #d4d4d8;
     --clrZinc05: #a1a1aa;
     --clrZinc06: #71717a;
+    --clrZinc07: #52525b;
     --clrShadow: #3f3f46;
     /* Sizes: Margins, Padding, Gaps */
     --sizeMar01: 1rem;
@@ -88,6 +89,14 @@ button, input {
     --sizeFont03: 2.5rem;
     --sizeFont04: 3rem;
 }
+
+/* Sans-Serif Font */
+
+
+/* Sophisticated Everywhere Font */
+
+
+/* App Title Font */
 
 /* ------------------------------ Styles ------------------------------------ */
 
@@ -311,6 +320,33 @@ body {
 
             & input[type='radio'] {
                 
+            }
+        }
+
+        & .button-row {
+            align-self: center;
+            margin-top: var(--sizeMar01);
+
+            display: flex;
+            gap: var(--sizeMar01);
+
+            & button {
+                font-size: var(--sizeFont02);
+                font-weight: bold;
+                color: var(--clrZinc01);
+                background-color: var(--clrZinc06);
+                border: none;
+                border-radius: 3px;
+                padding: 0.4rem 1.5rem;
+                cursor: pointer;
+
+                &:hover {
+                    background-color: var(--clrZinc05);
+                }
+
+                &:active {
+                    background-color: var(--clrZinc07);
+                }
             }
         }
     }
