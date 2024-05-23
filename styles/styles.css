@@ -75,6 +75,7 @@ button, input {
     --sizeMar03: 3rem;
     --sizePad02: 2rem;
     --sizeSmall01: 0.6rem;
+    --sizeSmall02: 0.4rem;
     --sizeFormRowMar: calc((var(--sizeDialogWidth) - var(--sizeInputWidth))/2 -
         (var(--sizeDialogBrdr) + var(--sizeLabelWidth) + var(--sizeMar01) + 
         var(--sizeMar03)));
@@ -89,6 +90,7 @@ button, input {
     --sizeFont03: 2.5rem;
     --sizeFont04: 3rem;
     --sizeFont05: 1.2rem;
+    --sizeFontInput: 1.0rem;
 }
 
 /* Sans-Serif Font */
@@ -303,6 +305,15 @@ body {
 
             & input[type='text'] {
                 width: var(--sizeInputWidth);
+                outline: none;
+                border: 1px solid var(--clrZinc05);
+                border-radius: 3px;
+                padding: var(--sizeSmall02);
+                font-size: var(--sizeFontInput);
+
+                &:focus {
+                    box-shadow: 0px 0px 1px 1px var(--clrZinc05);
+                }
             }
 
         }
