@@ -251,7 +251,34 @@ body {
     left: calc((100% - max(40ch, 40%)) / 2);
 
     width: max(40ch, 40%);
-    background-color: var(--clrZinc02);
 
     /* display: none; */
+
+    /* Style for overlay surroundings background filter */
+    &:after {
+        position: fixed;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        z-index: -2;
+
+        content: '';
+        background: rgba(0, 0, 0, 0.5);
+    }
+
+    /* Style for overlay background */
+    &:before {
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        z-index: -1;
+
+        content: '';
+        background: var(--clrZinc03);
+        border-radius: 3px;
+    }
+
 }
