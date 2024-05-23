@@ -71,6 +71,7 @@ button, input {
     /* Sizes: Margins, Padding, Gaps */
     --sizeMar01: 1rem;
     --sizeMar02: 2rem;
+    --sizeMar03: 3rem;
     --sizePad02: 2rem;
     --sizeSmall01: 0.6rem;
     /* Sizes: Fonts */
@@ -248,9 +249,9 @@ body {
     position: fixed;
     z-index: 2;
     top: 20%;
-    left: calc((100% - max(40ch, 40%)) / 2);
+    left: calc((100% - max(50ch, 40%)) / 2);
 
-    width: max(40ch, 40%);
+    width: max(50ch, 40%);
 
     /* display: none; */
 
@@ -281,4 +282,30 @@ body {
         border-radius: 3px;
     }
 
+    
+    & .book-form {
+        padding: var(--sizeMar03);
+
+        display: flex;
+        flex-direction: column;
+        gap: var(--sizeMar01);
+        
+        & h2 {
+            font-size: var(--sizeFont01);
+            margin-bottom: var(--sizeMar01);
+        }
+
+        & .form-row {
+            /* text-align: right; */
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-end;
+            align-content: center;
+            gap: var(--sizeMar01);
+
+            & input[type='text'] {
+                width: max(20ch, 80%);
+            }
+        }
+    }
 }
