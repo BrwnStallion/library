@@ -74,6 +74,14 @@ button, input {
     --sizeMar03: 3rem;
     --sizePad02: 2rem;
     --sizeSmall01: 0.6rem;
+    --sizeFormRowMar: calc((var(--sizeDialogWidth) - var(--sizeInputWidth))/2 -
+        (var(--sizeDialogBrdr) + var(--sizeLabelWidth) + var(--sizeMar01) + 
+        var(--sizeMar03)));
+    /* Sizes: Widths, Heights */
+    --sizeDialogWidth: 30rem;
+    --sizeDialogBrdr: 2px;
+    --sizeLabelWidth: 8ch;
+    --sizeInputWidth: 20ch;
     /* Sizes: Fonts */
     --sizeFont01: 1.5rem;
     --sizeFont02: 1.2rem;
@@ -246,65 +254,63 @@ body {
 }
 
 .form-overlay {
-    /* position: fixed; */
-    /* z-index: 2; */
-    /* top: 20%; */
-    /* left: calc((100% - max(50ch, 40%)) / 2); */
+    padding: 0rem;
+    min-width: var(--sizeDialogWidth);
+    border: var(--sizeDialogBrdr) solid black;
 
-    width: max(60ch, 40%);
-
-    /* display: none; */
-
-    /* Style for overlay surroundings background filter */
-    /* &:after {
-        position: fixed;
-        top: 0;
-        left: 0;
-        bottom: 0;
-        right: 0;
-        z-index: -2;
-
-        content: '';
-        background: rgba(0, 0, 0, 0.5);
-    } */
-
-    /* Style for overlay background */
-    /* &:before {
-        position: absolute;
-        top: 0;
-        left: 0;
-        bottom: 0;
-        right: 0;
-        z-index: -1;
-
-        content: '';
-        background: var(--clrZinc03);
-        border-radius: 3px;
-    } */
-
-    
     & .book-form {
         padding: var(--sizeMar03);
 
         display: flex;
         flex-direction: column;
+        align-items: flex-start;
         gap: var(--sizeMar01);
         
         & h2 {
+            align-self: center;
+            
             font-size: var(--sizeFont01);
             margin-bottom: var(--sizeMar01);
         }
 
         & .form-row {
-            /* text-align: right; */
+            /* To put equal amount of space on either side of the input field */
+            margin-left: var(--sizeFormRowMar);
+            
             display: flex;
-            flex-direction: row;
-            justify-content: flex-end;
-            align-content: center;
+            /* justify-content: flex-end; */
+            align-items: center;
             gap: var(--sizeMar01);
 
+            & label {
+                width: var(--sizeLabelWidth);
+                text-align: right;
+            }
+
             & input[type='text'] {
-                width: max(20ch, 80%);
+                width: var(--sizeInputWidth);
+            }
+
+        }
+
+        & .radio-form-row {
+            margin-left: var(--sizeFormRowMar);
+
+            & legend {
+                float: left;
+                margin-right: var(--sizeMar01);
+
+                width: var(--sizeLabelWidth);
+                text-align: right;
+            }
+
+            & ul {
+                display: flex;
+                gap: var(--sizeMar01);
+            }
+
+            & input[type='radio'] {
+                
             }
         }
     }
