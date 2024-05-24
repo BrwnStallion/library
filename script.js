@@ -183,7 +183,7 @@ btnSubmit.addEventListener('click', (e) => {
     );
 
     // Add the book to a new card
-
+    printBookToCard();
 
     // Update the library count
     appendTitle();
