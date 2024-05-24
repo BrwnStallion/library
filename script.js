@@ -162,3 +162,29 @@ addBtn.addEventListener('click', () => {
 
 
 // Form submit button listener; for updating cards, updating library count
+const btnSubmit = document.querySelector('.form-overlay #submit');
+btnSubmit.addEventListener('click', (e) => {
+    
+    // Stop form from submitting (don't have server capability)
+    e.preventDefault();
+
+    // Check if all of the fields satisfy the pattern requirements
+
+
+    // Store information in a book object, add that book to the library
+    addBookToLibrary(
+        document.querySelector('input#title').value,
+        document.querySelector('input#author').value,
+        document.querySelector('input#pages').value,
+        document.querySelector('input#year').value,
+        document.querySelector('input#genre').value,
+        document.querySelector('input#type').value,
+        document.querySelector(`input[name='read-status']:checked`).value, ''
+    );
+
+    // Add the book to a new card
+
+
+    // Update the library count
+    appendTitle();
+});
