@@ -24,32 +24,6 @@
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Functions ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-
-
-// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Execution ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-
-// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Testing ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-const myLibrary = [];
-
-const bookMaster = {
-    // init method for adding properties to books
-    init: function(title, author, pages, yearPublished, genre, type, read,
-      yearRead) {
-        this.title = title;
-        this.author = author;
-        this.pages = pages;
-        this.yearPublished = yearPublished;
-        this.genre = genre;
-        this.type = type;
-        this.read = read;
-        this.yearRead = yearRead;
-        return this; // allows to chain .create with .init
-  },
-}
-
 // Add info method to book master
 bookMaster.info = function() {
     return `${this.title} by ${this.author}, ${this.pages} pages,` +
@@ -151,12 +125,37 @@ function appendTitle() {
     title.textContent += ` (${myLibrary.length})`;
 }
 
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Execution ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+const myLibrary = [];
+
+const bookMaster = {
+    // init method for adding properties to books
+    init: function(title, author, pages, yearPublished, genre, type, read,
+      yearRead) {
+        this.title = title;
+        this.author = author;
+        this.pages = pages;
+        this.yearPublished = yearPublished;
+        this.genre = genre;
+        this.type = type;
+        this.read = read;
+        this.yearRead = yearRead;
+        return this; // allows to chain .create with .init
+  },
+}
+
 // Listener to open the form dialog box
 const addBtn = document.querySelector('#add-book');
 const formDialog = document.querySelector('.form-overlay');
 addBtn.addEventListener('click', () => {
     formDialog.showModal();
 });
+
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Testing ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+
 
 
 // DOM Content Loaded Listener; for loading existing cards, adding library count
