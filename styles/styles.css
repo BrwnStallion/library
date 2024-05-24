@@ -249,14 +249,12 @@ body {
 
         & button {
             font-size: var(--sizeFont02);
-            /* font-weight: bold; */
             color: black;
             background-color: var(--clrZinc01);
             border: 2px solid black;
-            border-radius: 16px;
-            padding: 0.1rem 0.6rem;
+            border-radius: 7px;
+            padding: 0.1rem 0.5rem;
             cursor: pointer;
-            /* font-variant: small-caps; */
 
             &:hover {
                 background-color: var(--clrZinc03);
@@ -310,8 +308,10 @@ body {
                     background-color: var(--clrZinc01);
                     border: 1px solid black;
                     border-radius: 7px;
-                    padding: 0.2rem 0.6rem;
+                    width: 10ch;
+                    padding: 0.3rem 0rem;
                     cursor: pointer;
+                    /* Include the transition here to match the card's */
                     transition: transform 0.3s;
         
                     &:hover {
