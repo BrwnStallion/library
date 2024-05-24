@@ -24,13 +24,6 @@
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Functions ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-// Add info method to book master
-bookMaster.info = function() {
-    return `${this.title} by ${this.author}, ${this.pages} pages,` +
-    ` ${this.read}.`;
-};
-
-
 function addBookToLibrary(title, author, pages, yearPublished, genre, type,
     read, yearRead) {
     const book = Object.create(bookMaster).init(
@@ -144,6 +137,12 @@ const bookMaster = {
         return this; // allows to chain .create with .init
   },
 }
+
+// Add info method to book master
+bookMaster.info = function() {
+    return `${this.title} by ${this.author}, ${this.pages} pages,` +
+    ` ${this.read}.`;
+};
 
 // Listener to open the form dialog box
 const addBtn = document.querySelector('#add-book');
