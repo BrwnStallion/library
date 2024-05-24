@@ -246,6 +246,26 @@ body {
         & .title {
             font-size: var(--sizeFontLarge);
         }
+
+        & button {
+            font-size: var(--sizeFont02);
+            /* font-weight: bold; */
+            color: black;
+            background-color: var(--clrZinc01);
+            border: 2px solid black;
+            border-radius: 16px;
+            padding: 0.1rem 0.6rem;
+            cursor: pointer;
+            /* font-variant: small-caps; */
+
+            &:hover {
+                background-color: var(--clrZinc03);
+            }
+
+            &:active {
+                background-color: var(--clrZinc05);
+            }
+        }
     }
 
     & .card-container {
@@ -280,9 +300,27 @@ body {
 
             & .buttons {
                 justify-self: end;
+                
+                display: flex;
+                gap: var(--sizeSmall02);
 
                 & button {
-
+                    font-size: var(--sizeFont03);
+                    color: black;
+                    background-color: var(--clrZinc01);
+                    border: 1px solid black;
+                    border-radius: 7px;
+                    padding: 0.2rem 0.6rem;
+                    cursor: pointer;
+                    transition: transform 0.3s;
+        
+                    &:hover {
+                        background-color: var(--clrZinc03);
+                    }
+        
+                    &:active {
+                        background-color: var(--clrZinc05);
+                    }
                 }
             }
         }
