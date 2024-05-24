@@ -87,17 +87,39 @@ button, input {
     /* Sizes: Fonts */
     --sizeFont01: 1.5rem;
     --sizeFont02: 1.2rem;
-    --sizeFont03: 2.5rem;
-    --sizeFont04: 3rem;
-    --sizeFont05: 1.2rem;
+    --sizeFontLarge: 2.5rem;
+    --sizeFontMax: 3rem;
+    --sizeFontLabels: 1.2rem;
+    --sizeFontTitle: 2rem;
     --sizeFontInput: 1.0rem;
 }
 
-/* Sans-Serif Font */
-
-
 /* Sophisticated Everywhere Font */
 
+@font-face {
+    font-family: serif-playfair;
+    src: url(fonts/playfair/Playfair[opsz\,wdth\,wght].ttf);
+    /* has potential */
+}
+
+@font-face {
+    font-family: serif-ibarrarealnova;
+    src: url(fonts/ibarrarealnova/IbarraRealNova[wght].ttf);
+    /* has potential */
+}
+
+@font-face {
+    font-family: serif-matesc;
+    src: url(fonts/matesc/MateSC-Regular.ttf);
+    /* potential for title */
+}
+
+
+@font-face {
+    font-family: serif-cormorantsc;
+    src: url(fonts/cormorantsc/CormorantSC-Medium.ttf);
+    /* potential as title, or for card titles only */
+}
 
 /* App Title Font */
 
@@ -110,6 +132,7 @@ html {
 body {
     min-height: 100%;
     cursor: default;
+    font-family: serif-ibarrarealnova;
 
     display: grid;
     grid-template-rows: auto 1fr;
@@ -124,14 +147,13 @@ body {
     z-index: 1;
     padding: var(--sizeMar02) var(--sizeMar01);
 
-    font-size: var(--sizeFont01);
     background-color: var(--clrZinc03);
-
+    
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     align-items: center;
     gap: var(--sizeMar01);
-
+    
     & .title-sidebar {
         
         display: grid;
@@ -139,20 +161,22 @@ body {
         gap: var(--sizeMar01);
         justify-items: start;
         align-items: center;
-
+        
         & .sidebar-icon {
             align-self: center;
-
+            
             cursor: pointer;
             /* minor alignment to center with the rest of the header objects */
             margin-top: 0.3rem;
         }
-
+        
         & .title {
             padding: var(--sizeSmall01);
             padding-left: 0rem;
             justify-content: start;
             cursor: pointer;
+            font-family: serif-cormorantsc;
+            font-size: var(--sizeFontTitle);
         }
     }
 
@@ -220,13 +244,13 @@ body {
         gap: var(--sizeMar01);
 
         & .title {
-            font-size: var(--sizeFont03);
+            font-size: var(--sizeFontLarge);
         }
     }
 
     & .card-container {
         display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(50ch, 1fr));
+        grid-template-columns: repeat(auto-fill, minmax(45ch, 1fr));
         grid-auto-rows: minmax(25rem, 1fr);
         column-gap: 1.5rem;
         row-gap: var(--sizeMar02);
@@ -247,7 +271,7 @@ body {
             }
 
             & .title {
-                font-size: var(--sizeFont04);
+                font-size: var(--sizeFontMax);
             }
 
             & .info {
@@ -279,7 +303,7 @@ body {
         gap: var(--sizeMar01);
 
         & legend, & .form-row label {
-            font-size: var(--sizeFont05);
+            font-size: var(--sizeFontLabels);
         }
         
         & h2 {
@@ -294,7 +318,6 @@ body {
             margin-left: var(--sizeFormRowMar);
             
             display: flex;
-            /* justify-content: flex-end; */
             align-items: center;
             gap: var(--sizeMar01);
 
