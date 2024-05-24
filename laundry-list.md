@@ -1,5 +1,22 @@
 Library App Laundry List
 
+05/23/24 (main)
+- Add styles for cards; refine styles once the JS is worked out
+- Consider making sidebar a popup
+    - This will require a transition
+    - Can have the sidebar markup be created and displayed with a listener
+    - Sidebar can be an overlay, or it can rearrange the page contents
+        - Overlay is better; can have the rest of the contents gray out
+- Look into animations for the links on the header (underlines)
+- Style form controls for adding a book to the library
+- Add transform/transition thing for opening and closing the overlay
+- Add regex patterns for all of the form controls
+    - Consider using listener to restrict user from being able to even input
+      text when it's supposed to be numbers
+- Add logic for including keys and colons when printing to each card
+- Convert the overlay to a <dialog>
+    - COMPLETE
+
 05/22/24 (main)
 - Add styles for cards
     - Consider making the cards have a lower text area that's outside of the
@@ -16,6 +33,7 @@ Library App Laundry List
         - Blur background when the screen is up
         - Add listeners on the cancel button (and maybe the non-overlay area)
           so that the overlay goes away
+    - COMPLETE
     - Add transform/transition thing for opening and closing the overlay
 - Add regex patterns for all of the form controls
     - Consider using listener to restrict user from being able to even input
