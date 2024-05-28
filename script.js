@@ -25,9 +25,9 @@
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Functions ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 function addBookToLibrary(title, author, pages, yearPublished, genre, type,
-    read, yearRead) {
+    status, yearRead) {
     const book = Object.create(bookMaster).init(
-      title, author, pages, yearPublished, genre, type, read, yearRead);
+      title, author, pages, yearPublished, genre, type, status, yearRead);
 
     myLibrary.push(book);
 }
@@ -91,7 +91,8 @@ function printBookToCard(bookObject) {
             } else {
                 
                 element = makeElement('p', '');
-                element.textContent = bookObject[prop];
+                element.textContent = `${convertProperty(prop)}:`
+                    + ` ${bookObject[prop]}`;
                 info.appendChild(element);
             };
         };
@@ -111,6 +112,17 @@ function printBookToCard(bookObject) {
     cardContainer.appendChild(card);
 }
 
+// Converts book property name to pretty format for the card element
+function convertProperty(prop) {
+    switch (prop) {
+        case 'author': return 'Author';
+        case 'pages': return 'Pages';
+        case 'yearPublished': return 'Year Published';
+        case 'genre': return 'Genre';
+        case 'type': return 'Type';
+        case 'status': return 'Status';
+    };
+}
 
 // Creates and appends an element with content to a parent
 function addElement(parent, tag, eleClass, content) {
@@ -142,7 +154,7 @@ const myLibrary = [];
 
 const bookMaster = {
     // init method for adding properties to books
-    init: function(title, author, pages, yearPublished, genre, type, read,
+    init: function(title, author, pages, yearPublished, genre, type, status,
       yearRead) {
         this.title = title;
         this.author = author;
@@ -150,16 +162,16 @@ const bookMaster = {
         this.yearPublished = yearPublished;
         this.genre = genre;
         this.type = type;
-        this.read = read;
+        this.status = status;
         this.yearRead = yearRead;
         return this; // allows to chain .create with .init
   },
-}
+};
 
 // Add info method to book master
 bookMaster.info = function() {
     return `${this.title} by ${this.author}, ${this.pages} pages,` +
-    ` ${this.read}.`;
+    ` ${this.status}.`;
 };
 
 // Listener to open the form dialog box
@@ -186,6 +198,9 @@ addBookToLibrary('Labyrinths', 'Jorge Luis Borges', 260, 1962, 'Short Stories',
 document.addEventListener('DOMContentLoaded', () => {
     
     printLibraryToCards(myLibrary, 'all');
+
+    // Show the library size count
+    appendTitle();
 });
 
 
