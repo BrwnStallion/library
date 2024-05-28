@@ -32,67 +32,85 @@ function addBookToLibrary(title, author, pages, yearPublished, genre, type,
     myLibrary.push(book);
 }
 
-function getEachBook(library) {
+// Print library contents to card elements; all books, or last book
+    // Situation: 'all' (DOM load) or 'last' (form submit)
+function printLibraryToCards(library, situation) {
     
+    switch (situation) {
+        case 'all':
+
+            // Loop through each book
+            library.forEach((item)=> {
+                
+                // Create card element
+                printBookToCard(item);
+            });
+        break;
+        case 'last':
+
+            // Create card element for last object in the library
+            printBookToCard(library[library.length - 1]);
+        break;
+    };
+}
+
+// Takes an inputted book object and prints its contents to a card element
+function printBookToCard(bookObject) {
+
     let cardContainer = document.querySelector('.card-container');
 
-    // Loop through each book
-    library.forEach((item)=> {
+    // Create card element
+    let card = makeElement('div','book-card');
+    // Create card sub-divs
+    let info = makeElement('div', 'info');
+    let buttons = makeElement('div', 'buttons');
+    
+    // Loop through each property on current book
+    for (let prop in bookObject) {
         
-        // Create card element
-        let card = makeElement('div','book-card');
-        // Create card sub-divs
-        let info = makeElement('div', 'info');
-        let buttons = makeElement('div', 'buttons');
-
-        // Loop through each property on current book
-        for (let prop in item) {
-            
-            // Property is on the book (and not prototype)
-            let isOwn = item.hasOwnProperty(prop);
-            
-            // Property wasn't left blank
-            let isBlank;
-            (item[prop] === '')
-                ? isBlank = true
-                : isBlank = false;
-
-            // Only display these properties
-            if (isOwn && !isBlank) {
-                let element;
-
-                // Add content to the card
-                if (prop === 'title') {
-
-                    element = makeElement('h2', 'title');
-                    element.textContent = item[prop];
-                    card.appendChild(element);
-
-                } else {
-                    
-                    element = makeElement('p', '');
-                    element.textContent = item[prop];
-                    info.appendChild(element);
-                }
+        // Property is on the book (and not prototype)
+        let isOwn = bookObject.hasOwnProperty(prop);
+        
+        // Property wasn't left blank
+        let isBlank;
+        (bookObject[prop] === '')
+            ? isBlank = true
+            : isBlank = false;
+    
+        // Only display these properties
+        if (isOwn && !isBlank) {
+            let element;
+    
+            // Add content to the card
+            if (prop === 'title') {
+    
+                element = makeElement('h2', 'title');
+                element.textContent = bookObject[prop];
+                card.appendChild(element);
+    
+            } else {
                 
+                element = makeElement('p', '');
+                element.textContent = bookObject[prop];
+                info.appendChild(element);
             };
         };
-
-        // Append info to the card
-        card.appendChild(info);
-
-        // Create and append buttons to the button div
-        addElement(buttons, 'button', 'read', 'Mark Read');
-        addElement(buttons, 'button', 'remove', 'Remove')
-
-        // Append buttons div to the card
-        card.appendChild(buttons);
-
-        // Append card to the card-container
-        cardContainer.appendChild(card);
-
-    });
+    };
+    
+    // Append info to the card
+    card.appendChild(info);
+    
+    // Create and append buttons to the button div
+    addElement(buttons, 'button', 'read', 'Mark Read');
+    addElement(buttons, 'button', 'remove', 'Remove')
+    
+    // Append buttons div to the card
+    card.appendChild(buttons);
+    
+    // Append card to the card-container
+    cardContainer.appendChild(card);
 }
+
 
 // Creates and appends an element with content to a parent
 function addElement(parent, tag, eleClass, content) {
@@ -183,7 +201,7 @@ btnSubmit.addEventListener('click', (e) => {
     );
 
     // Add the book to a new card
-    printBookToCard();
+    printLibraryToCards(myLibrary, 'last');
 
     // Update the library count
     appendTitle();
