@@ -171,12 +171,22 @@ addBtn.addEventListener('click', () => {
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Testing ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+// Start the library off with some books so that the page isn't blank on load
+addBookToLibrary('Bleak House', 'Charles Dickens', 894, 1852,
+    'Novel', 'Fiction', 'Read', '');
 
+addBookToLibrary('The Idiot', 'Fyodor Dostoyevsky', 658, 1868, 'Novel',
+    'Fiction', 'Read', '');
 
+addBookToLibrary('Labyrinths', 'Jorge Luis Borges', 260, 1962, 'Short Stories',
+    'Fiction', 'Read', '');
 
 
 // DOM Content Loaded Listener; for loading existing cards, adding library count
-
+document.addEventListener('DOMContentLoaded', () => {
+    
+    printLibraryToCards(myLibrary, 'all');
+});
 
 
 // Form submit button listener; for updating cards, updating library count
