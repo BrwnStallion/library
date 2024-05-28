@@ -294,6 +294,10 @@ body {
 
             & .info {
                 font-size: var(--sizeFont02);
+                
+                & p {
+                    transform: scale(1.02);
+                }
             }
 
             & .buttons {
@@ -311,8 +315,8 @@ body {
                     width: 10ch;
                     padding: 0.3rem 0rem;
                     cursor: pointer;
-                    /* Include the transition here to match the card's */
-                    transition: transform 0.3s;
+                    /* Include the transform here to match the card's */
+                    transform: scale(1.02);
         
                     &:hover {
                         background-color: var(--clrZinc03);
