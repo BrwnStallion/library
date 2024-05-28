@@ -40,7 +40,7 @@ function printLibraryToCards(library, situation) {
         case 'all':
 
             // Loop through each book
-            library.forEach((item)=> {
+            library.forEach((item) => {
                 
                 // Create card element
                 printBookToCard(item);
@@ -196,19 +196,39 @@ btnSubmit.addEventListener('click', (e) => {
     // Stop form from submitting (don't have server capability)
     e.preventDefault();
 
+    // Declare object for storing form input elements
+    const formElements = {};
+    formElements.title = document.querySelector('input#title');
+    formElements.author = document.querySelector('input#author');
+    formElements.pages = document.querySelector('input#pages');
+    formElements.yearPub = document.querySelector('input#year');
+    formElements.genre = document.querySelector('input#genre');
+    formElements.type = document.querySelector('input#type');
+    formElements.status = document.querySelector(
+        `input[name='read-status']:checked`);
+    
     // Check if all of the fields satisfy the pattern requirements
 
 
     // Store information in a book object, add that book to the library
     addBookToLibrary(
-        document.querySelector('input#title').value,
-        document.querySelector('input#author').value,
-        document.querySelector('input#pages').value,
-        document.querySelector('input#year').value,
-        document.querySelector('input#genre').value,
-        document.querySelector('input#type').value,
-        document.querySelector(`input[name='read-status']:checked`).value, ''
-    );
+        formElements.title.value,
+        formElements.author.value,
+        formElements.pages.value,
+        formElements.yearPub.value,
+        formElements.genre.value,
+        formElements.type.value,
+        formElements.status.value, '');
+
+    // Close the dialog
+    formDialog.close();
+
+    // Clear the dialog contents
+        // Create array of formElements' keys, then iterate through each key
+        // accessing the the property on formElements.
+    Object.keys(formElements).forEach((prop) => {
+        formElements[prop].value = '';
+    });
 
     // Add the book to a new card
     printLibraryToCards(myLibrary, 'last');
