@@ -1,5 +1,39 @@
 Library App Laundry List
 
+05/28/24 (main)
+- Consider making sidebar a popup
+    - This will require a transition
+    - Can have the sidebar markup be created and displayed with a listener
+    - Sidebar can be an overlay, or it can rearrange the page contents
+        - Overlay is better; can have the rest of the contents gray out
+- Look into animations for the links on the header (underlines)
+- Add transform/transition thing for opening and closing the overlay
+- Add backdrop blur to dialog box
+- Add regex patterns for all of the form controls
+    - Consider using listener to restrict user from being able to even input
+      text when it's supposed to be numbers
+- Add logic for removing cards
+    - Can use data-attributes on the card element
+    - Will need logic to renumber data-attributes each time the library size
+      changes
+- Add styles for cards; refine styles once the JS is worked out
+    - Align the colons; or do something that differentiates
+    - COMPLETE
+- Add logic for displaying pretty status messages
+    - COMPLETE
+- Add logic for including keys and colons when printing to each card
+    - COMPLETE
+- Add logic for adding the book to the library
+    - Need to be able to add the last book to the library when adding from form
+    - Need to be able to add all of the books to the library when the page
+      loads
+    - Can create a function that adds a specific book to the library
+        - Can include that function into the function that runs when the page
+          loads initially
+        - This function will be able to add just the last one when the form is
+          submitted
+    - COMPLETE
+
 05/24/24 (main)
 - Add styles for cards; refine styles once the JS is worked out
 - Consider making sidebar a popup

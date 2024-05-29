@@ -110,8 +110,8 @@ function printBookToCard(bookObject) {
     card.appendChild(info);
     
     // Create and append buttons to the button div
-    addElement(buttons, 'button', 'read', 'Mark Read');
-    addElement(buttons, 'button', 'remove', 'Remove')
+    addElement(buttons, 'button', `read ${cardID}`, 'Mark Read');
+    addElement(buttons, 'button', `remove ${cardID}`, 'Remove')
     
     // Append buttons div to the card
     card.appendChild(buttons);
@@ -270,12 +270,16 @@ btnSubmit.addEventListener('click', (e) => {
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Testing ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 // Listener on container for read/remove button clicks
-const cardContainer = document.querySelector('.title-container');
+const cardContainer = document.querySelector('.card-container');
 cardContainer.addEventListener('click', (e) => {
     
     // 'Mark Read' button click
 
 
     // 'Remove' button click
-    
+    console.log(e);
+    console.log(Object.getPrototypeOf(e));
+    console.log(e.target);
+    console.log(e.target.parentElement.parentElement);
+    // if e.target.id = 
 });
