@@ -91,8 +91,16 @@ function printBookToCard(bookObject) {
             } else {
                 
                 element = makeElement('p', '');
-                element.textContent = `${convertProperty(prop)}:`
-                    + ` ${convertRadioValue(bookObject[prop])}`;
+
+                // Span will go inside the <p>
+                let key = makeElement('span', '');
+
+                // Span has the book object keys
+                key.textContent = `${convertProperty(prop)}: `
+                element.appendChild(key);
+
+                // Book object values go after the span
+                key.after(`${convertRadioValue(bookObject[prop])}`);
                 info.appendChild(element);
             };
         };
