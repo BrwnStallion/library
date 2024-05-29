@@ -92,7 +92,7 @@ function printBookToCard(bookObject) {
                 
                 element = makeElement('p', '');
                 element.textContent = `${convertProperty(prop)}:`
-                    + ` ${bookObject[prop]}`;
+                    + ` ${convertRadioValue(bookObject[prop])}`;
                 info.appendChild(element);
             };
         };
@@ -121,6 +121,17 @@ function convertProperty(prop) {
         case 'genre': return 'Genre';
         case 'type': return 'Type';
         case 'status': return 'Status';
+    };
+}
+
+// Converts radio value to pretty format for the card element
+function convertRadioValue(value) {
+    switch (value) {
+        case 'read': return 'Read';
+        case 'not-read': return 'Not read';
+        case 'in-progress': return 'In progress';
+        default:
+            return value;
     };
 }
 
