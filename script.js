@@ -193,15 +193,6 @@ bookMaster.info = function() {
     ` ${this.status}.`;
 };
 
-// Listener to open the form dialog box
-const addBtn = document.querySelector('#add-book');
-const formDialog = document.querySelector('.form-overlay');
-addBtn.addEventListener('click', () => {
-    formDialog.showModal();
-});
-
-// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Testing ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
 // Start the library off with some books so that the page isn't blank on load
 addBookToLibrary('Bleak House', 'Charles Dickens', 894, 1852,
     'Novel', 'Fiction', 'Read', '');
@@ -212,8 +203,7 @@ addBookToLibrary('The Idiot', 'Fyodor Dostoyevsky', 658, 1868, 'Novel',
 addBookToLibrary('Labyrinths', 'Jorge Luis Borges', 260, 1962, 'Short Stories',
     'Fiction', 'Read', '');
 
-
-// DOM Content Loaded Listener; for loading existing cards, adding library count
+// DOMContentLoaded Listener; for loading existing cards, adding library count
 document.addEventListener('DOMContentLoaded', () => {
     
     printLibraryToCards(myLibrary, 'all');
@@ -222,6 +212,12 @@ document.addEventListener('DOMContentLoaded', () => {
     appendTitle();
 });
 
+// Listener to open the form dialog box
+const addBtn = document.querySelector('#add-book');
+const formDialog = document.querySelector('.form-overlay');
+addBtn.addEventListener('click', () => {
+    formDialog.showModal();
+});
 
 // Form submit button listener; for updating cards, updating library count
 const btnSubmit = document.querySelector('.form-overlay #submit');
@@ -269,4 +265,17 @@ btnSubmit.addEventListener('click', (e) => {
 
     // Update the library count
     appendTitle();
+});
+
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Testing ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+// Listener on container for read/remove button clicks
+const cardContainer = document.querySelector('.title-container');
+cardContainer.addEventListener('click', (e) => {
+    
+    // 'Mark Read' button click
+
+
+    // 'Remove' button click
+    
 });
