@@ -127,13 +127,17 @@ function printBookToCard(bookObject) {
 function renumberCardAttrib() {
 
     // Create nodeList of book cards
-
-    // Store myLibrary length (probably don't need this)
+    const bookCardList = document.querySelectorAll('.book-card');
 
     // Iterate through book card nodeList (starting at i = 0)
+    for (let i = 0; i < bookCardList.length; i++) {
+        
+        // Set data-attribute corresponding to iteration index
+            // attribute should match myLibrary index
+            // 'data-card-index = X' where 'X' is index
+        bookCardList[i].dataset.cardIndex = i;
+    };
 
-    // Set data-attribute corresponding to iteration index
-        // attribute should match myLibrary index
 }
 
 // Converts book property name to pretty format for the card element
