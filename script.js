@@ -82,29 +82,18 @@ function printBookToCard(bookObject) {
     
         // Only display these properties
         if (isOwn && !isBlank) {
-            let element;
     
             // Add content to the card
             if (prop === 'title') {
     
-                element = makeElement('h2', 'title');
+                let element = makeElement('h2', 'title');
                 element.textContent = bookObject[prop];
                 card.appendChild(element);
     
             } else {
                 
-                element = makeElement('p', '');
-
-                // Span will go inside the <p>
-                let key = makeElement('span', '');
-
-                // Span has the book object keys
-                key.textContent = `${convertProperty(prop)}: `
-                element.appendChild(key);
-
-                // Book object values go after the span
-                key.after(`${convertRadioValue(bookObject[prop])}`);
-                info.appendChild(element);
+                addToInfoElement(prop, bookObject, info);
+                
             };
         };
     };
@@ -168,6 +157,34 @@ function addElement(parent, tag, eleClass, content) {
     let element = makeElement(tag, eleClass)
     element.textContent = content;
     parent.appendChild(element);
+}
+
+// Creates and appends info elements onto a book card
+function addToInfoElement(prop, bookObject, parentElement) {
+    
+    let element;
+    
+    if (prop === 'status') {
+        
+        // Create <p> with .status so that it can be changed if needed
+        element = makeElement('p', 'status');
+
+    } else {
+        
+        element = makeElement('p', '');
+        
+    };
+    
+    // Span will go inside the <p>
+    let key = makeElement('span', '');
+    // Span has the book object keys
+    key.textContent = `${convertProperty(prop)}: `
+    
+    element.appendChild(key);
+
+    // Book object values go after the span
+    key.after(`${convertRadioValue(bookObject[prop])}`);
+    parentElement.appendChild(element);
 }
 
 // Creates an element
@@ -295,15 +312,38 @@ cardContainer.addEventListener('click', (e) => {
     
     // 'Mark Read' button click
     if (e.target.className === 'read') {
-
-        // Access the card's attribute
-
-
-        // Go to myLibrary and edit the corresponding book's key-value pair
-
-
+        
         // Disable the 'Mark Read' button for this book
+        e.target.disabled = true;
+        
+        // Access the card's attribute
+        const cardElement = e.target.parentElement.parentElement;
+        let cardIndex = cardElement.dataset.cardIndex;
+        
+        // Go to myLibrary and edit the corresponding book's key-value pair
+        myLibrary[cardIndex].status = 'Read';
+        
 
+        // Update card to match book in myLibrary
+        
+        // Select the paragraph with the read status
+        const statusPara = document.querySelector(
+            `[data-card-index='${cardIndex}'] p.status`);
+
+        // Empty out the status paragraph element
+        statusPara.textContent = '';
+
+        // Recreate the span that will go inside the <p>
+        let key = makeElement('span', '');
+
+        // Span has the book object keys
+        key.textContent = `${convertProperty('status')}: `
+
+        // Append the span to the now-emptied status paragraph
+        statusPara.appendChild(key);
+
+        // Book object values go after the span
+        key.after(`${convertRadioValue(myLibrary[cardIndex]['status'])}`);
 
     // 'Remove' button click
     } else if (e.target.className === 'remove') {
