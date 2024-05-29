@@ -331,6 +331,14 @@ body {
                     &:active {
                         background-color: var(--clrZinc05);
                     }
+
+                    &:disabled {
+                        background-color: rgb(163, 163, 163);
+                        border-color: rgb(163, 163, 163);
+                        color: linen;
+                        opacity: 0.7;
+                        cursor: default;
+                    }
                 }
             }
         }
