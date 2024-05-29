@@ -294,9 +294,15 @@ body {
 
             & .info {
                 font-size: var(--sizeFont02);
+                line-height: 2.0;
                 
                 & p {
                     transform: scale(1.02);
+
+                    /* Styles for the book info keys */
+                    & span {
+                        font-weight: bold;
+                    }
                 }
             }
 
