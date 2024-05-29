@@ -52,6 +52,9 @@ function printLibraryToCards(library, situation) {
             printBookToCard(library[library.length - 1]);
         break;
     };
+
+    // Renumber all book cards to match myLibrary index
+    renumberCardAttrib();
 }
 
 // Takes an inputted book object and prints its contents to a card element
@@ -110,14 +113,27 @@ function printBookToCard(bookObject) {
     card.appendChild(info);
     
     // Create and append buttons to the button div
-    addElement(buttons, 'button', `read ${cardID}`, 'Mark Read');
-    addElement(buttons, 'button', `remove ${cardID}`, 'Remove')
+    addElement(buttons, 'button', `read`, 'Mark Read');
+    addElement(buttons, 'button', `remove`, 'Remove')
     
     // Append buttons div to the card
     card.appendChild(buttons);
     
     // Append card to the card-container
     cardContainer.appendChild(card);
+}
+
+// Renumbers all book card elements to match myLibrary index
+function renumberCardAttrib() {
+
+    // Create nodeList of book cards
+
+    // Store myLibrary length (probably don't need this)
+
+    // Iterate through book card nodeList (starting at i = 0)
+
+    // Set data-attribute corresponding to iteration index
+        // attribute should match myLibrary index
 }
 
 // Converts book property name to pretty format for the card element
@@ -274,12 +290,30 @@ const cardContainer = document.querySelector('.card-container');
 cardContainer.addEventListener('click', (e) => {
     
     // 'Mark Read' button click
+    if (e.target.className === 'read') {
+
+        // Access the card's attribute
+
+
+        // Go to myLibrary and edit the corresponding book's key-value pair
+
+
+        // Disable the 'Mark Read' button for this book
 
 
     // 'Remove' button click
-    console.log(e);
-    console.log(Object.getPrototypeOf(e));
-    console.log(e.target);
+    } else if (e.target.className === 'remove') {
+        
+        // Access the card's attribute
+
+
+        // Remove the card using its attribute
+
+
+        // Renumber card data-attributes to match myLibrary index
+        renumberCardAttrib();
+    };
+
     console.log(e.target.parentElement.parentElement);
-    // if e.target.id = 
+
 });
