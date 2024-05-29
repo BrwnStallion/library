@@ -309,15 +309,18 @@ cardContainer.addEventListener('click', (e) => {
     } else if (e.target.className === 'remove') {
         
         // Access the card's attribute
+        const cardElement = e.target.parentElement.parentElement;
+        let cardIndex = cardElement.dataset.cardIndex;
 
-
-        // Remove the card using its attribute
-
+        // Remove the card and book using its attribute
+        cardElement.remove();
+        myLibrary.splice(cardIndex, 1);
 
         // Renumber card data-attributes to match myLibrary index
         renumberCardAttrib();
-    };
 
-    console.log(e.target.parentElement.parentElement);
+        // Update the library size counter
+        appendTitle();
+    };
 
 });
