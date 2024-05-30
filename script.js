@@ -200,13 +200,12 @@ function renumberCardAttrib() {
 
 // Disables all 'mark read' buttons if book object is read
 function markReadAuto(library) {
+    
     const cardList = document.querySelectorAll('.book-card');
-    console.log(cardList);
     for (let i = 0; i < cardList.length; i++) {
         
         // If 'read', disable the 'mark read' button
         if (library[i].status === 'read') {
-            console.log(cardList[i].querySelector('button.read'));
             cardList[i].querySelector('button.read').disabled = true;
         };
     };
