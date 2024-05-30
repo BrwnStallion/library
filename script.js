@@ -198,6 +198,20 @@ function renumberCardAttrib() {
 
 }
 
+// Disables all 'mark read' buttons if book object is read
+function markReadAuto(library) {
+    const cardList = document.querySelectorAll('.book-card');
+    console.log(cardList);
+    for (let i = 0; i < cardList.length; i++) {
+        
+        // If 'read', disable the 'mark read' button
+        if (library[i].status === 'read') {
+            console.log(cardList[i].querySelector('button.read'));
+            cardList[i].querySelector('button.read').disabled = true;
+        };
+    };
+}
+
 // Append library size to title
 function appendTitle() {
     let title = document.querySelector('h1.title');
@@ -232,13 +246,13 @@ bookMaster.info = function() {
 
 // Start the library off with some books so that the page isn't blank on load
 addBookToLibrary('Bleak House', 'Charles Dickens', 894, 1852,
-    'Novel', 'Fiction', 'Read', '');
+    'Novel', 'Fiction', 'read', '');
 
 addBookToLibrary('The Idiot', 'Fyodor Dostoyevsky', 658, 1868, 'Novel',
-    'Fiction', 'Read', '');
+    'Fiction', 'read', '');
 
 addBookToLibrary('Labyrinths', 'Jorge Luis Borges', 260, 1962, 'Short Stories',
-    'Fiction', 'Read', '');
+    'Fiction', 'read', '');
 
 // DOMContentLoaded Listener; for loading existing cards, adding library count
 document.addEventListener('DOMContentLoaded', () => {
@@ -249,14 +263,7 @@ document.addEventListener('DOMContentLoaded', () => {
     appendTitle();
 
     // Check through each card and see if it has 'status: read'
-    const cardList = document.querySelectorAll('.book-card');
-    for (let i = 0; i < cardList.length; i++) {
-        
-        // If 'read', disable the 'mark read' button
-        if (myLibrary[i].status === 'Read') {
-            cardList[i].querySelector('button.read').disabled = true;
-        };
-    };
+    markReadAuto(myLibrary);
 
 });
 
@@ -310,6 +317,9 @@ btnSubmit.addEventListener('click', (e) => {
 
     // Add the book to a new card
     printLibraryToCards(myLibrary, 'last');
+
+    // Disable 'mark read' if the book object shows 'read'
+    markReadAuto(myLibrary);
 
     // Update the library count
     appendTitle();
