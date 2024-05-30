@@ -1,5 +1,26 @@
 Library App Laundry List
 
+05/29/24 (main)
+- Consider making sidebar a popup
+    - This will require a transition
+    - Can have the sidebar markup be created and displayed with a listener
+    - Sidebar can be an overlay, or it can rearrange the page contents
+        - Overlay is better; can have the rest of the contents gray out
+- Look into animations for the links on the header (underlines)
+- Add transform/transition thing for opening and closing the overlay
+- Add backdrop blur to dialog box
+- Add regex patterns for all of the form controls
+    - Consider using listener to restrict user from being able to even input
+      text when it's supposed to be numbers
+- Add logic for removing cards
+    - Can use data-attributes on the card element
+    - Will need logic to renumber data-attributes each time the library size
+      changes
+    - COMPLETE
+- Add logic for disabling 'mark read' button if book on load/submittal is
+  already 'read'
+    - COMPLETE
+
 05/28/24 (main)
 - Consider making sidebar a popup
     - This will require a transition
