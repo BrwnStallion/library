@@ -24,37 +24,81 @@
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Functions ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+// Creates an element
+function makeElement(tag, eleClass) {
+    const element = document.createElement(tag);
+
+    // Avoids 'undefined' class if 'eleClass' left blank
+    if (eleClass !== '') {
+        element.classList.toggle(eleClass);
+    }
+    return element;
+}
+
+// Creates and appends an element with content to a parent
+function addElement(parent, tag, eleClass, content) {
+    let element = makeElement(tag, eleClass)
+    element.textContent = content;
+    parent.appendChild(element);
+}
+
+// Converts book property name to pretty format for the card element
+function convertProperty(prop) {
+    switch (prop) {
+        case 'author': return 'Author';
+        case 'pages': return 'Pages';
+        case 'yearPublished': return 'Year Published';
+        case 'genre': return 'Genre';
+        case 'type': return 'Type';
+        case 'status': return 'Status';
+    };
+}
+
+// Converts radio value to pretty format for the card element
+function convertRadioValue(value) {
+    switch (value) {
+        case 'read': return 'Read';
+        case 'not-read': return 'Not read';
+        case 'in-progress': return 'In progress';
+        default:
+            return value;
+    };
+}
+
+// Creates and appends info elements onto a book card
+function addToInfoElement(prop, bookObject, parentElement) {
+    
+    let element;
+    
+    if (prop === 'status') {
+        
+        // Create <p> with .status so that it can be changed if needed
+        element = makeElement('p', 'status');
+
+    } else {
+        
+        element = makeElement('p', '');
+        
+    };
+    
+    // Span will go inside the <p>
+    let key = makeElement('span', '');
+    // Span has the book object keys
+    key.textContent = `${convertProperty(prop)}: `
+    
+    element.appendChild(key);
+
+    // Book object values go after the span
+    key.after(`${convertRadioValue(bookObject[prop])}`);
+    parentElement.appendChild(element);
+}
+
 function addBookToLibrary(title, author, pages, yearPublished, genre, type,
     status, yearRead) {
     const book = Object.create(bookMaster).init(
       title, author, pages, yearPublished, genre, type, status, yearRead);
 
     myLibrary.push(book);
-}
-
-// Print library contents to card elements; all books, or last book
-    // Situation: 'all' (DOM load) or 'last' (form submit)
-function printLibraryToCards(library, situation) {
-    
-    switch (situation) {
-        case 'all':
-
-            // Loop through each book
-            library.forEach((item) => {
-                
-                // Create card element
-                printBookToCard(item);
-            });
-        break;
-        case 'last':
-
-            // Create card element for last object in the library
-            printBookToCard(library[library.length - 1]);
-        break;
-    };
-
-    // Renumber all book cards to match myLibrary index
-    renumberCardAttrib();
 }
 
 // Takes an inputted book object and prints its contents to a card element
@@ -112,6 +156,31 @@ function printBookToCard(bookObject) {
     cardContainer.appendChild(card);
 }
 
+// Print library contents to card elements; all books, or last book
+    // Situation: 'all' (DOM load) or 'last' (form submit)
+function printLibraryToCards(library, situation) {
+    
+    switch (situation) {
+        case 'all':
+
+            // Loop through each book
+            library.forEach((item) => {
+                
+                // Create card element
+                printBookToCard(item);
+            });
+        break;
+        case 'last':
+
+            // Create card element for last object in the library
+            printBookToCard(library[library.length - 1]);
+        break;
+    };
+
+    // Renumber all book cards to match myLibrary index
+    renumberCardAttrib();
+}
+
 // Renumbers all book card elements to match myLibrary index
 function renumberCardAttrib() {
 
@@ -127,75 +196,6 @@ function renumberCardAttrib() {
         bookCardList[i].dataset.cardIndex = i;
     };
 
-}
-
-// Converts book property name to pretty format for the card element
-function convertProperty(prop) {
-    switch (prop) {
-        case 'author': return 'Author';
-        case 'pages': return 'Pages';
-        case 'yearPublished': return 'Year Published';
-        case 'genre': return 'Genre';
-        case 'type': return 'Type';
-        case 'status': return 'Status';
-    };
-}
-
-// Converts radio value to pretty format for the card element
-function convertRadioValue(value) {
-    switch (value) {
-        case 'read': return 'Read';
-        case 'not-read': return 'Not read';
-        case 'in-progress': return 'In progress';
-        default:
-            return value;
-    };
-}
-
-// Creates and appends an element with content to a parent
-function addElement(parent, tag, eleClass, content) {
-    let element = makeElement(tag, eleClass)
-    element.textContent = content;
-    parent.appendChild(element);
-}
-
-// Creates and appends info elements onto a book card
-function addToInfoElement(prop, bookObject, parentElement) {
-    
-    let element;
-    
-    if (prop === 'status') {
-        
-        // Create <p> with .status so that it can be changed if needed
-        element = makeElement('p', 'status');
-
-    } else {
-        
-        element = makeElement('p', '');
-        
-    };
-    
-    // Span will go inside the <p>
-    let key = makeElement('span', '');
-    // Span has the book object keys
-    key.textContent = `${convertProperty(prop)}: `
-    
-    element.appendChild(key);
-
-    // Book object values go after the span
-    key.after(`${convertRadioValue(bookObject[prop])}`);
-    parentElement.appendChild(element);
-}
-
-// Creates an element
-function makeElement(tag, eleClass) {
-    const element = document.createElement(tag);
-
-    // Avoids 'undefined' class if 'eleClass' left blank
-    if (eleClass !== '') {
-        element.classList.toggle(eleClass);
-    }
-    return element;
 }
 
 // Append library size to title
@@ -315,8 +315,6 @@ btnSubmit.addEventListener('click', (e) => {
     appendTitle();
 });
 
-// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Testing ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
 // Listener on container for read/remove button clicks
 const cardContainer = document.querySelector('.card-container');
 cardContainer.addEventListener('click', (e) => {
@@ -335,7 +333,7 @@ cardContainer.addEventListener('click', (e) => {
         myLibrary[cardIndex].status = 'Read';
         
 
-        // Update card to match book in myLibrary
+        // Update card to match book in myLibrary ------------------------------
         
         // Select the paragraph with the read status
         const statusPara = document.querySelector(
@@ -375,3 +373,5 @@ cardContainer.addEventListener('click', (e) => {
     };
 
 });
+
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Testing ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
