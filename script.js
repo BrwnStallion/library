@@ -247,6 +247,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Show the library size count
     appendTitle();
+
+    // Check through each card and see if it has 'status: read'
+    const cardList = document.querySelectorAll('.book-card');
+    for (let i = 0; i < cardList.length; i++) {
+        
+        // If 'read', disable the 'mark read' button
+        if (myLibrary[i].status === 'Read') {
+            cardList[i].querySelector('button.read').disabled = true;
+        };
+    };
+
 });
 
 // Listener to open the form dialog box
