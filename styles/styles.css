@@ -60,15 +60,15 @@ button, input {
     /* ----------------------- Variables ---------------------------- */
     
     /* Colors */
-    --clrImgBrdr: black;
-    --clrZinc01: #fafafa;
-    --clrZinc02: #f4f4f5;
-    --clrZinc03: #e4e4e7;
-    --clrZinc04: #d4d4d8;
-    --clrZinc05: #a1a1aa;
-    --clrZinc06: #71717a;
-    --clrZinc07: #52525b;
-    --clrShadow: #3f3f46;
+    --clrHeader: #9E7777;
+    --clrBody: #F5E8C7;
+    --clrCards: #DEBA9D;
+    --clrButtons: #9E7777;
+    --clrButtonHover: #c99d9d;
+    --clrButtonActive: #6F4C5B;
+    --clrHeaderText: #F5E8C7;
+    --clrMainText: rgb(49, 49, 49);
+    --clrInputBrdr: rgb(168, 168, 168);
     /* Sizes: Margins, Padding, Gaps */
     --sizeMar01: 1rem;
     --sizeMar02: 2rem;
@@ -84,6 +84,7 @@ button, input {
     --sizeDialogBrdr: 2px;
     --sizeLabelWidth: 8ch;
     --sizeInputWidth: 20ch;
+    --sizeBtnRadius: 3px;
     /* Sizes: Fonts */
     --sizeFont01: 1.5rem;
     --sizeFont02: 1.2rem;
@@ -133,6 +134,8 @@ body {
     min-height: 100%;
     cursor: default;
     font-family: serif-ibarrarealnova;
+    background-color: var(--clrBody);
+    color: var(--clrMainText);
 
     display: grid;
     grid-template-rows: auto 1fr;
@@ -147,7 +150,8 @@ body {
     z-index: 1;
     padding: var(--sizeMar02) var(--sizeMar01);
 
-    background-color: var(--clrZinc03);
+    background-color: var(--clrHeader);
+    color: var(--clrHeaderText);
     
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -208,7 +212,7 @@ body {
         & .profile-pic {
             border-radius: 50%;
             box-sizing: initial;
-            border: 2px solid var(--clrZinc03);
+            border: 2px solid var(--clrHeader);
             background-image: url(../img/profile-pic.jpg);
             background-size: 250%;
             background-position: 50% 10%;
@@ -217,7 +221,7 @@ body {
             cursor: pointer;
 
             &:hover {
-                border: 2px solid var(--clrImgBrdr);
+                border: 2px solid var(--clrHeaderText);
             }
         }
 
@@ -225,6 +229,38 @@ body {
             padding: var(--sizeSmall01) 0rem;
             cursor: pointer;
         }
+    }
+}
+
+/* Universal button styles */
+button {
+    color: var(--clrBody);
+    background-color: var(--clrButtons);
+    border: 2px solid var(--clrButtons);
+    border-radius: var(--sizeBtnRadius);
+    cursor: pointer;
+
+    &:hover {
+        background-color: var(--clrButtonHover);
+        border: 2px solid var(--clrButtonHover);
+    }
+
+    &:active {
+        background-color: var(--clrButtonActive);
+        border: 2px solid var(--clrButtonActive);
+    }
+
+    &:focus {
+        outline: none;
+        border: 2px solid var(--clrMainText);
+    }
+
+    &:disabled {
+        background-color: rgb(163, 163, 163);
+        border-color: rgb(163, 163, 163);
+        color: linen;
+        opacity: 0.7;
+        cursor: default;
     }
 }
 
@@ -249,20 +285,7 @@ body {
 
         & button {
             font-size: var(--sizeFont02);
-            color: black;
-            background-color: var(--clrZinc01);
-            border: 2px solid black;
-            border-radius: 7px;
-            padding: 0.1rem 0.5rem;
-            cursor: pointer;
-
-            &:hover {
-                background-color: var(--clrZinc03);
-            }
-
-            &:active {
-                background-color: var(--clrZinc05);
-            }
+            padding: 0.3rem 0.5rem;
         }
     }
 
@@ -275,7 +298,7 @@ body {
 
         & .book-card {
             border-radius: 5px;
-            background-color: var(--clrZinc04);
+            background-color: var(--clrCards);
             padding: var(--sizeMar01);
 
             transition: transform 0.3s;
@@ -314,31 +337,13 @@ body {
 
                 & button {
                     font-size: var(--sizeFont03);
-                    color: black;
-                    background-color: var(--clrZinc01);
-                    border: 1px solid black;
-                    border-radius: 7px;
+                    border-width: 1px;
                     width: 10ch;
                     padding: 0.3rem 0rem;
-                    cursor: pointer;
                     /* Include the transform here to match the card's */
                     transform: scale(1.02);
         
-                    &:hover {
-                        background-color: var(--clrZinc03);
-                    }
-        
-                    &:active {
-                        background-color: var(--clrZinc05);
-                    }
-
-                    &:disabled {
-                        background-color: rgb(163, 163, 163);
-                        border-color: rgb(163, 163, 163);
-                        color: linen;
-                        opacity: 0.7;
-                        cursor: default;
-                    }
+                    
                 }
             }
         }
@@ -348,7 +353,8 @@ body {
 .form-overlay {
     padding: 0rem;
     min-width: var(--sizeDialogWidth);
-    border: var(--sizeDialogBrdr) solid black;
+    border: var(--sizeDialogBrdr) solid var(--clrMainText);
+    background-color: var(--clrBody);
 
     & .book-form {
         padding: var(--sizeMar03);
@@ -385,13 +391,14 @@ body {
             & input[type='text'] {
                 width: var(--sizeInputWidth);
                 outline: none;
-                border: 1px solid var(--clrZinc05);
+                border: 1px solid var(--clrInputBrdr);
                 border-radius: 3px;
                 padding: var(--sizeSmall02);
                 font-size: var(--sizeFontInput);
+                color: inherit;
 
                 &:focus {
-                    box-shadow: 0px 0px 1px 1px var(--clrZinc05);
+                    box-shadow: 0px 0px 1px 1px var(--clrInputBrdr);
                 }
             }
 
@@ -426,20 +433,7 @@ body {
             & button {
                 font-size: var(--sizeFont02);
                 font-weight: bold;
-                color: var(--clrZinc01);
-                background-color: var(--clrZinc06);
-                border: none;
-                border-radius: 3px;
                 padding: 0.4rem 1.5rem;
-                cursor: pointer;
-
-                &:hover {
-                    background-color: var(--clrZinc05);
-                }
-
-                &:active {
-                    background-color: var(--clrZinc07);
-                }
             }
         }
     }
