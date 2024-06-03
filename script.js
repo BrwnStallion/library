@@ -219,6 +219,36 @@ function appendTitle() {
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Execution ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+
+(function() {
+    const library = {
+        library: {},
+        init: function() {
+            this.cacheDom();
+            this.bindEvents();
+            this.render();
+        },
+        cacheDom: function() {
+            
+        },
+        bindEvents: function() {
+
+        },
+        render: function() {
+
+        },
+        addBooktoLibrary: function() {
+
+        },
+        markRead: function() {
+
+        },
+        
+    };
+
+    library.init();
+})();
+
 const myLibrary = [];
 
 const bookMaster = {
