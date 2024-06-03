@@ -229,10 +229,23 @@ function appendTitle() {
             this.render();
         },
         cacheDom: function() {
-            
+            this.title = document.querySelector('h1.title');
+            this.addBtn = document.querySelector('#add-book');
+            this.formDialog = document.querySelector('.form-overlay');
+            this.btnSubmit = document.querySelector('.form-overlay #submit');
+            this.cardContainer = document.querySelector('.card-container');
+            this.bookCardList = document.querySelectorAll('.book-card');
         },
         bindEvents: function() {
+            document.addEventListener('DOMContentLoaded', () => {
+                printLibraryToCards(myLibrary, 'all');
 
+                // Show the library size count
+                appendTitle();
+
+                // Check through each card and see if it has 'status: read'
+                markReadAuto(myLibrary);
+            });
         },
         render: function() {
 
@@ -284,17 +297,17 @@ addBookToLibrary('Labyrinths', 'Jorge Luis Borges', 260, 1962, 'Short Stories',
     'Fiction', 'read', '');
 
 // DOMContentLoaded Listener; for loading existing cards, adding library count
-document.addEventListener('DOMContentLoaded', () => {
+// document.addEventListener('DOMContentLoaded', () => {
     
-    printLibraryToCards(myLibrary, 'all');
+//     printLibraryToCards(myLibrary, 'all');
 
-    // Show the library size count
-    appendTitle();
+//     // Show the library size count
+//     appendTitle();
 
-    // Check through each card and see if it has 'status: read'
-    markReadAuto(myLibrary);
+//     // Check through each card and see if it has 'status: read'
+//     markReadAuto(myLibrary);
 
-});
+// });
 
 // Listener to open the form dialog box
 const addBtn = document.querySelector('#add-book');
